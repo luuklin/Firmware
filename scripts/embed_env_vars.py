@@ -49,6 +49,8 @@ def get_git_commit() -> str | None:
 # Find env variables based on only the pioenv and sysenv.
 def get_pio_firmware_vars() -> dict[str, str | int | bool]:
     fw_board = pio.get_string('PIOENV')
+    if fw_board == 'native':
+        return {}  # No chip for native builds.
     fw_chip = pio.get_string('BOARD_MCU')
 
     def macroify(s: str) -> str:
