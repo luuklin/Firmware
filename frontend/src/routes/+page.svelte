@@ -2,6 +2,7 @@
   import { browser } from '$app/environment';
   import { SerializeAccountLinkCommand } from '$lib/Serializers/AccountLinkCommand';
   import { SerializeSetRfTxPinCommand } from '$lib/Serializers/SetRfTxPinCommand';
+  import { SerializeActionCommand } from '$lib/Serializers/ActionCommand';
   import { WebSocketClient } from '$lib/WebSocketClient';
   import WiFiList from '$lib/components/WiFiList.svelte';
   import { DeviceStateStore } from '$lib/stores';
@@ -28,6 +29,17 @@
     WebSocketClient.Instance.Send(data);
   }
 
+  function performAction() {
+    /*  
+  Stop = 0,
+  Shock = 1,
+  Vibrate = 2,
+  Sound = 3,
+*/
+    const data = SerializeActionCommand(2, 100, 25);
+    WebSocketClient.Instance.Send(data);
+  }
+
   function setRfTxPin() {
     if (!rfTxPinValid) return;
     const data = SerializeSetRfTxPinCommand(rfTxPin!);
@@ -46,6 +58,8 @@
         <button class="btn variant-filled" on:click={linkAccount} disabled={!linkCodeValid || linkCode.length < 6}>Link</button>
       </div>
     </div>
+
+    <button on:click={performAction}>Do thing</button>
 
     <div class="flex flex-col space-y-2">
       <div class="flex flex-row space-x-2 items-center">

@@ -170,11 +170,10 @@ def build_frontend(source, target, env):
     # Build the frontend only if it wasn't already built.
     # This is to avoid rebuilding the frontend every time the firmware is built.
     # This could also lead to some annoying behaviour where the frontend is not updated when the firmware is built.
-    if not sysenv.get_bool('CI', False):
-        print('Building frontend...')
-        os.system('npm i')
-        os.system('npm run build')
-        print('Frontend build complete.')
+    print('Building frontend...')
+    os.system('npm i')
+    os.system('npm run build')
+    print('Frontend build complete.')
 
     # Change working directory back to root.
     os.chdir('..')

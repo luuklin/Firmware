@@ -3,11 +3,11 @@ import shutil
 import subprocess
 
 
-def flatc_test(path: str):
+def flatc_test(path):
     return os.system(path + ' --version') == 0
 
 
-def exec_silent(args: list[str]):
+def exec_silent(args):
     return subprocess.check_output(args, shell=True).decode('utf-8').strip()
 
 

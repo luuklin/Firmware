@@ -39,3 +39,13 @@ void _Private::HandleSetRfTxPinCommand(std::uint8_t socketId, const OpenShock::S
 
   serializeSetRfTxPinResult(socketId, pin, result);
 }
+
+void _Private::HandleActionCommand(std::uint8_t socketId, const OpenShock::Serialization::Local::LocalToHubMessage* root) {
+  auto msg = root->payload_as_ActionCommand();
+  auto typeNum = msg->type();
+  auto duration = msg->duration();
+  auto intensity = msg->power();
+  auto model = static_cast<OpenShock::Serialization::Types::ShockerModelType>(0);
+  auto type = static_cast<OpenShock::Serialization::Types::ShockerCommandType>(typeNum);
+  OpenShock::CommandHandler::HandleCommand(model, 42526, type, intensity, duration/256.0*15000.0);
+}

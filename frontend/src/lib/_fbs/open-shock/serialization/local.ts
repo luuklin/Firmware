@@ -4,6 +4,7 @@
 
 export { AccountLinkCommand } from './local/account-link-command';
 export { AccountUnlinkCommand } from './local/account-unlink-command';
+export { ActionCommand } from './local/action-command';
 export { LocalToHubMessage } from './local/local-to-hub-message';
 export { LocalToHubMessagePayload } from './local/local-to-hub-message-payload';
 export { OtaUpdateCheckForUpdatesCommand } from './local/ota-update-check-for-updates-command';

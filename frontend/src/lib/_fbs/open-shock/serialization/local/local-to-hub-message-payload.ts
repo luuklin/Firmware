@@ -4,6 +4,7 @@
 
 import { AccountLinkCommand } from '../../../open-shock/serialization/local/account-link-command';
 import { AccountUnlinkCommand } from '../../../open-shock/serialization/local/account-unlink-command';
+import { ActionCommand } from '../../../open-shock/serialization/local/action-command';
 import { OtaUpdateCheckForUpdatesCommand } from '../../../open-shock/serialization/local/ota-update-check-for-updates-command';
 import { OtaUpdateHandleUpdateRequestCommand } from '../../../open-shock/serialization/local/ota-update-handle-update-request-command';
 import { OtaUpdateSetAllowBackendManagementCommand } from '../../../open-shock/serialization/local/ota-update-set-allow-backend-management-command';
@@ -39,13 +40,14 @@ export enum LocalToHubMessagePayload {
   OtaUpdateStartUpdateCommand = 14,
   AccountLinkCommand = 15,
   AccountUnlinkCommand = 16,
-  SetRfTxPinCommand = 17
+  SetRfTxPinCommand = 17,
+  ActionCommand = 18
 }
 
 export function unionToLocalToHubMessagePayload(
   type: LocalToHubMessagePayload,
-  accessor: (obj:AccountLinkCommand|AccountUnlinkCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand) => AccountLinkCommand|AccountUnlinkCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null
-): AccountLinkCommand|AccountUnlinkCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null {
+  accessor: (obj:AccountLinkCommand|AccountUnlinkCommand|ActionCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand) => AccountLinkCommand|AccountUnlinkCommand|ActionCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null
+): AccountLinkCommand|AccountUnlinkCommand|ActionCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null {
   switch(LocalToHubMessagePayload[type]) {
     case 'NONE': return null; 
     case 'WifiScanCommand': return accessor(new WifiScanCommand())! as WifiScanCommand;
@@ -65,15 +67,16 @@ export function unionToLocalToHubMessagePayload(
     case 'AccountLinkCommand': return accessor(new AccountLinkCommand())! as AccountLinkCommand;
     case 'AccountUnlinkCommand': return accessor(new AccountUnlinkCommand())! as AccountUnlinkCommand;
     case 'SetRfTxPinCommand': return accessor(new SetRfTxPinCommand())! as SetRfTxPinCommand;
+    case 'ActionCommand': return accessor(new ActionCommand())! as ActionCommand;
     default: return null;
   }
 }
 
 export function unionListToLocalToHubMessagePayload(
   type: LocalToHubMessagePayload, 
-  accessor: (index: number, obj:AccountLinkCommand|AccountUnlinkCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand) => AccountLinkCommand|AccountUnlinkCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null, 
+  accessor: (index: number, obj:AccountLinkCommand|AccountUnlinkCommand|ActionCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand) => AccountLinkCommand|AccountUnlinkCommand|ActionCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null, 
   index: number
-): AccountLinkCommand|AccountUnlinkCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null {
+): AccountLinkCommand|AccountUnlinkCommand|ActionCommand|OtaUpdateCheckForUpdatesCommand|OtaUpdateHandleUpdateRequestCommand|OtaUpdateSetAllowBackendManagementCommand|OtaUpdateSetCheckIntervalCommand|OtaUpdateSetDomainCommand|OtaUpdateSetIsEnabledCommand|OtaUpdateSetRequireManualApprovalCommand|OtaUpdateSetUpdateChannelCommand|OtaUpdateStartUpdateCommand|SetRfTxPinCommand|WifiNetworkConnectCommand|WifiNetworkDisconnectCommand|WifiNetworkForgetCommand|WifiNetworkSaveCommand|WifiScanCommand|null {
   switch(LocalToHubMessagePayload[type]) {
     case 'NONE': return null; 
     case 'WifiScanCommand': return accessor(index, new WifiScanCommand())! as WifiScanCommand;
@@ -93,6 +96,7 @@ export function unionListToLocalToHubMessagePayload(
     case 'AccountLinkCommand': return accessor(index, new AccountLinkCommand())! as AccountLinkCommand;
     case 'AccountUnlinkCommand': return accessor(index, new AccountUnlinkCommand())! as AccountUnlinkCommand;
     case 'SetRfTxPinCommand': return accessor(index, new SetRfTxPinCommand())! as SetRfTxPinCommand;
+    case 'ActionCommand': return accessor(index, new ActionCommand())! as ActionCommand;
     default: return null;
   }
 }
