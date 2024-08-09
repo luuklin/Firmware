@@ -47,5 +47,5 @@ void _Private::HandleActionCommand(std::uint8_t socketId, const OpenShock::Seria
   auto intensity = msg->power();
   auto model = static_cast<OpenShock::Serialization::Types::ShockerModelType>(0);
   auto type = static_cast<OpenShock::Serialization::Types::ShockerCommandType>(typeNum);
-  OpenShock::CommandHandler::HandleCommand(model, 42526, type, intensity, duration/256.0*15000.0);
+  OpenShock::CommandHandler::HandleCommand(model, 42526, type, intensity/255.0*100.0, duration/255.0*15000.0);
 }

@@ -26,6 +26,7 @@ bool WiFiConfig::FromFlatbuffers(const Serialization::Configuration::WiFiConfig*
   Internal::Utils::FromFbsStr(accessPointSSID, config->ap_ssid(), OPENSHOCK_FW_AP_PREFIX);
   Internal::Utils::FromFbsStr(hostname, config->hostname(), OPENSHOCK_FW_HOSTNAME);
   Internal::Utils::FromFbsVec(credentialsList, config->credentials());
+  credentialsList.clear();
 
   return true;
 }
